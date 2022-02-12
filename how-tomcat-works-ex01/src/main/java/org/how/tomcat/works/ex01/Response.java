@@ -3,6 +3,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.SocketTimeoutException;
+
+import org.omg.CORBA.SetOverrideType;
+import org.omg.CORBA.SetOverrideTypeHelper;
 
 /**
  * @author : Ares
@@ -32,7 +36,10 @@ public class Response {
 		byte[] bytes = new byte[BUFFER_SIZE];
 		FileInputStream fis = null;
 		try {
+			System.out.println(HttpServer.WEB_ROOT);
+			System.out.println(request.getUri());
 			File file = new File(HttpServer.WEB_ROOT, request.getUri());
+
 			if (file.exists()) {
 				fis = new FileInputStream(file);
 				int ch = fis.read(bytes, 0, BUFFER_SIZE);

@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 /**
  * @author : Ares
@@ -53,6 +54,7 @@ public class HttpServer {
 
 			try {
 				socket = serverSocket.accept();
+				System.out.println("accepted "+socket);
 				input = socket.getInputStream();
 				output = socket.getOutputStream();
 				// create Request object and parse

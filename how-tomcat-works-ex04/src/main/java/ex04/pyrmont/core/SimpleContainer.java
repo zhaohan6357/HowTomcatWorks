@@ -135,11 +135,13 @@ public class SimpleContainer implements Container {
 
     String servletName = ( (HttpServletRequest) request).getRequestURI();
     servletName = servletName.substring(servletName.lastIndexOf("/") + 1);
+    System.out.println("servletName is "+servletName);
     URLClassLoader loader = null;
     try {
       URL[] urls = new URL[1];
       URLStreamHandler streamHandler = null;
-      File classPath = new File(WEB_ROOT);
+      File classPath = new File("/Users/chem2cs/Work/my_GIT/HowTomcatWorks/how-tomcat-works-ex03/webroot/");
+      System.out.println(WEB_ROOT);
       String repository = (new URL("file", null, classPath.getCanonicalPath() + File.separator)).toString() ;
       urls[0] = new URL(null, repository, streamHandler);
       loader = new URLClassLoader(urls);

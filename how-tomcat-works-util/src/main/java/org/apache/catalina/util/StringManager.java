@@ -107,6 +107,12 @@ public class StringManager {
         bundle = ResourceBundle.getBundle(bundleName);
     }
 
+    public static void main(String[] args) {
+        //org.apache.catalina.connector.http.LocalStrings
+        ResourceBundle bundle = ResourceBundle.getBundle("org.apache.catalina.connector.http.LocalStrings");
+        System.out.println(bundle);
+    }
+
     /**
      * Get a string from the underlying resource bundle.
      *
@@ -150,9 +156,9 @@ public class StringManager {
         try {
             // ensure the arguments are not null so pre 1.2 VM's don't barf
             Object nonNullArgs[] = args;
-            for (int i=0; i<args.length; i++) {
+            for (int i = 0; i < args.length; i++) {
                 if (args[i] == null) {
-                    if (nonNullArgs==args) nonNullArgs=(Object[])args.clone();
+                    if (nonNullArgs == args) nonNullArgs = (Object[]) args.clone();
                     nonNullArgs[i] = "null";
                 }
             }
@@ -179,7 +185,7 @@ public class StringManager {
      */
 
     public String getString(String key, Object arg) {
-        Object[] args = new Object[] {arg};
+        Object[] args = new Object[] { arg };
         return getString(key, args);
     }
 
@@ -194,7 +200,7 @@ public class StringManager {
      */
 
     public String getString(String key, Object arg1, Object arg2) {
-        Object[] args = new Object[] {arg1, arg2};
+        Object[] args = new Object[] { arg1, arg2 };
         return getString(key, args);
     }
 
@@ -209,9 +215,8 @@ public class StringManager {
      * @param arg3
      */
 
-    public String getString(String key, Object arg1, Object arg2,
-                            Object arg3) {
-        Object[] args = new Object[] {arg1, arg2, arg3};
+    public String getString(String key, Object arg1, Object arg2, Object arg3) {
+        Object[] args = new Object[] { arg1, arg2, arg3 };
         return getString(key, args);
     }
 
@@ -227,9 +232,8 @@ public class StringManager {
      * @param arg4
      */
 
-    public String getString(String key, Object arg1, Object arg2,
-                            Object arg3, Object arg4) {
-        Object[] args = new Object[] {arg1, arg2, arg3, arg4};
+    public String getString(String key, Object arg1, Object arg2, Object arg3, Object arg4) {
+        Object[] args = new Object[] { arg1, arg2, arg3, arg4 };
         return getString(key, args);
     }
     // --------------------------------------------------------------
@@ -247,7 +251,7 @@ public class StringManager {
      */
 
     public synchronized static StringManager getManager(String packageName) {
-        StringManager mgr = (StringManager)managers.get(packageName);
+        StringManager mgr = (StringManager) managers.get(packageName);
         if (mgr == null) {
             mgr = new StringManager(packageName);
             managers.put(packageName, mgr);
