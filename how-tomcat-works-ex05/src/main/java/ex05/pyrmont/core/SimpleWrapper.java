@@ -64,6 +64,7 @@ public class SimpleWrapper implements Wrapper, Pipeline {
 
     Servlet servlet = null;
     String actualClass = servletClass;
+    System.out.println("class name is "+actualClass);
     if (actualClass == null) {
       throw new ServletException("servlet class has not been specified");
     }

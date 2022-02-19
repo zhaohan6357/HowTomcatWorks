@@ -34,7 +34,7 @@ public final class Bootstrap1 {
       connector.start();
 
       // make the application wait until we press a key.
-      System.in.read();
+      Thread.sleep(12121211111111L);
     }
     catch (Exception e) {
       e.printStackTrace();

@@ -28,6 +28,8 @@ import org.apache.catalina.net.ServerSocketFactory;
 import org.apache.catalina.util.LifecycleSupport;
 import org.apache.catalina.util.StringManager;
 
+import sun.java2d.pipe.SpanIterator;
+
 
 /**
  * Implementation of an HTTP/1.1 connector.
@@ -788,6 +790,7 @@ public final class HttpConnector
     private HttpProcessor createProcessor() {
 
         synchronized (processors) {
+            log("gotting processpr");
             if (processors.size() > 0) {
                 // if (debug >= 2)
                 // log("createProcessor: Reusing existing processor");
@@ -825,8 +828,12 @@ public final class HttpConnector
             localName = "HttpConnector";
         if (logger != null)
             logger.log(localName + " " + message);
-        else
+        else{
+            System.out.println("using sout");
             System.out.println(localName + " " + message);
+        }
+
+
 
     }
 
@@ -905,6 +912,7 @@ public final class HttpConnector
         if (address == null) {
             log(sm.getString("httpConnector.allAddresses"));
             try {
+                System.out.println("port is "+port);
                 return (factory.createSocket(port, acceptCount));
             } catch (BindException be) {
                 throw new BindException(be.getMessage() + ":" + port);
@@ -949,6 +957,7 @@ public final class HttpConnector
                 //                if (debug >= 3)
                 //                    log("run: Waiting on serverSocket.accept()");
                 socket = serverSocket.accept();
+                System.out.println("acceptted "+socket);
                 //                if (debug >= 3)
                 //                    log("run: Returned from serverSocket.accept()");
                 if (connectionTimeout > 0)
@@ -961,6 +970,7 @@ public final class HttpConnector
                 //                if (debug >= 3)
                 //                    log("run: Accept returned IOException", e);
                 try {
+                    System.out.println("catch exception");
                     // If reopening fails, exit
                     synchronized (threadSync) {
                         if (started && !stopped)
@@ -1006,7 +1016,7 @@ public final class HttpConnector
                     log(sm.getString("httpConnector.noProcessor"));
                     socket.close();
                 } catch (IOException e) {
-                    ;
+
                 }
                 continue;
             }

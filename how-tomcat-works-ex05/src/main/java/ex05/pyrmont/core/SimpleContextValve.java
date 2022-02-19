@@ -14,6 +14,8 @@ import org.apache.catalina.Valve;
 import org.apache.catalina.ValveContext;
 import org.apache.catalina.Wrapper;
 
+import com.oracle.tools.packager.windows.WinAppBundler;
+
 public class SimpleContextValve implements Valve, Contained {
 
 	protected Container container;
@@ -48,6 +50,7 @@ public class SimpleContextValve implements Valve, Contained {
 		}
 		// Ask this Wrapper to process this Request
 		response.setContext(context);
+		System.out.println("wrapper is "+ wrapper.getName());
 		wrapper.invoke(request, response);
 	}
 
