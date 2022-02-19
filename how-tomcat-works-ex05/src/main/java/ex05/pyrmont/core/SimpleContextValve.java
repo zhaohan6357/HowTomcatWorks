@@ -14,7 +14,6 @@ import org.apache.catalina.Valve;
 import org.apache.catalina.ValveContext;
 import org.apache.catalina.Wrapper;
 
-import com.oracle.tools.packager.windows.WinAppBundler;
 
 public class SimpleContextValve implements Valve, Contained {
 
